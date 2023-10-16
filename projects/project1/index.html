@@ -102,8 +102,8 @@
         Onboarding a user (creating an AzureAD account and assigning them to a group) using a Logic App and automating the setup using information from a Sharepoint list 
 
         <b>Resources used:</b>
-        Sharepoint environment (through the <a href="https://developer.microsoft.com/en-us/microsoft-365/dev-program">Microsoft Developer Program</a>)
-        Azure Logic app
+        • Sharepoint environment (through the <a href="https://developer.microsoft.com/en-us/microsoft-365/dev-program">Microsoft Developer Program</a>)
+        • Azure Logic app
         </header>
 
         <header style="white-space:pre-line">
@@ -112,10 +112,18 @@
 
         <header style="white-space:pre-line">
           To begin a Sharepoint list was created with the headers <b>Name</b>, <b>Surname</b>, <b>Job Title</b> and <b>Department</b>, these were just placeholders in the begining but additional fields can be added in future as needed.
-          <img src="assets\img\InitSharepointList.PNG" alt="Sharepoint list">
+          <img src="InitSharepointList.PNG" style='border:1px solid #ffffff' alt="Sharepoint list">
 
           In the logic app 2 initial connectors were used, Sharepoint's "When an item is created" and Microsoft EntraID's "Create User"
-          <img src="assets\img\initialconnectors.PNG" alt="Initial connectors">
+          <img src="initialconnectors.PNG" style='border:1px solid #ffffff' alt="Initial connectors" >
+
+          The required fields were added to both connectors:
+
+          <img src="initialSharepointConnector.png" style='border:1px solid #ffffff' alt="Snow">
+          <img src="initialEntraIDConnector.png" style='border:1px solid #ffffff' alt="Forest">
+
+          I ran an initial test of the app, this failed
+
         </header> 
 
 
