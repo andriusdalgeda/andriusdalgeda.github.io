@@ -119,11 +119,71 @@
 
           The required fields were added to both connectors:
 
-          <img src="initialSharepointConnector.png" style='border:1px solid #ffffff' alt="Snow">
-          <img src="initialEntraIDConnector.png" style='border:1px solid #ffffff' alt="Forest">
+          <img src="initialSharepointConnector.png" style='border:1px solid #ffffff' alt="Initial Sharepoint Connector">
+          <img src="initialEntraIDConnector.png" style='border:1px solid #ffffff' alt="Initial EntraID connector">
 
-          I ran an initial test of the app, this failed
+          I ran an initial test of the app and this failed - looking at the error output it was relating to the User Principal name
+          <img src="UPNerror.png" style='border:1px solid #ffffff' alt="Forest">
 
+          This is a result of the connector being explicit in terms of only forwarding the exact information to EntraID - when you create an account manually through EntraID it will auto-fill the rest of the domain (e.g email@onmicrosoft.com)
+          
+          Instead, in this case the connector would forward the first & last name only, not adding the rest of the domain address - to resolve this I would have to explicitally add the rest of the domain
+          <img src="UPNerrorfixed.png" style='border:1px solid #ffffff' alt="Forest">
+
+          Running the logic app again I encounter a seperate error - this one relates to the 'Password' field in the connector:
+          <img src="passworderror.png" style='border:1px solid #ffffff' alt="Forest">
+
+          Since this relates to the complexity of the password I would have to add a bit more to the automatically generated password
+          
+          Looking at the EntraID user creation I can see the password requirements
+          <img src="passwordrequirements.png" style='border:1px solid #ffffff' alt="Forest">
+
+          To resolve this I added lower case and upper case characters to the connector:
+          <img src="passworderrorfixed.png" style='border:1px solid #ffffff' alt="Forest">
+          
+          This would generate a password along the lines of <i>RandomPassword</i> and 8 digits
+          
+          Running the test a third time successfully creates the user account:
+          <img src="successfulTestRun.png" style='border:1px solid #ffffff' alt="Forest">
+          <img src="successfulTestRunOutput.png" style='border:1px solid #ffffff' alt="Forest">
+
+          Alone this would work however I also added a few more things to make the onboarding process easier/more intuative
+          First I created 2 Groups to represent the <i>Department</i> specified in the Sharepoint list
+
+          <img src="Finance&ITgroup.png" style='border:1px solid #ffffff' alt="Forest">
+
+          I then also converted their 'Membership type' to <i>Dynamically Assigned</i> to allow me to automatically add everyone with a specific department on their EntraID account to the correct group
+          <img src="Finance&ITgroupDynamicMembership.png" style='border:1px solid #ffffff' alt="Forest">
+
+          Secondly I also added a confirmation that the user account has been set up - currently as there is no confirmation there is no way to know the account was created other than having access to EntraID
+          I chose to add a confirmation on the Sharepoint list to make it easy for the end user to see if the account was created
+
+          This was done by adding an 'Update Item' connector after the Entra ID one that will mark update the 'User created' field on the Sharepoint list to 'Yes'
+          <img src="UserCreatedSharepointConfirmation.png" style='border:1px solid #ffffff' alt="Forest">
+
+          I then ran the logic app with 2 users, one for Finance and another for IT - both these ran sucessfully and had the expected outpiut
+          <img src="DoubleTestRun.png" style='border:1px solid #ffffff' alt="Forest">
+          <img src="AzureADBothUsers.png" style='border:1px solid #ffffff' alt="Forest">
+          
+          
+          This updated the Sharepoint list as expected:
+          <img src="DoubleTestRunSharepoint.png" style='border:1px solid #ffffff' alt="Forest">
+
+          And this also automatically assinged them to the correct group:
+          <img src="UsersInGroup.PNG" style='border:1px solid #ffffff' alt="Forest">
+
+          Finally I also added an alert to the logic app - this would notify me whenever the Logic app failed to run:
+          <img src="LogicAppAlert.png" style='border:1px solid #ffffff' alt="Forest">
+
+          I verified this worked by inputting an invalid name in the Sharepoint list:
+          <img src="LogicAppAlertSuccessful.png" style='border:1px solid #ffffff' alt="Forest">
+
+          This logic app works automatically upon a user being created in the Sharepoint list, and has error alerts however this could be improved by:
+          
+          • <b>Excluding certain characters from the Sharepoint list</b> - specifically exluding symbols from the fields which would lead to errors
+          • <b>Add a confirmation field to the Sharepoint list</b> - required that any row has a 'Confirmation' before the logic app creates the user - this would reduce/eliminate any user errors
+          • <b>Assign additional permissions attached to the Groups</b> - such as access to enterprise apps or admin permissions to certain services
+          • <b>Send out an onboarding email</b> - In my environment I don't have mailboxes but you could integrate the <i>Exchange</i> connectors and send out an email with the users email, password, added permissions etc to streamline onboarding
         </header> 
 
 
