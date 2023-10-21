@@ -106,7 +106,6 @@
         </header>
 
         <header style="white-space:pre-line">        
-      
         I started by first following the <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-python?tabs=managed-identity%2Croles-azure-portal%2Csign-in-visual-studio-code">Azure Blob storage quick start guide for Python</a> which consisted of importing the relevant packages and testing the functionality of an existing Blob
         I also created a Storage Account on Azure, this is an encapsulator for individual containers which allows me to control access as well as to generate access keys
 
@@ -119,6 +118,7 @@
 
         And then generate a unique link for that .txt that can be used to download it for an hour:
         <img src="sasTokenForBlob.png" style='border:1px solid #ffffff' alt="">
+        
         <img src="sasTokenForBlobOutput.png" style='border:1px solid #ffffff' alt="">
 
         This confirmed that the functionality I needed existed within the Python package
@@ -129,7 +129,7 @@
         <b>• No SAS <a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview">(Shared Access Signature)</a> capability</b> which would be necessary for me to generate a link that anyone could use to download the file for a limited time
         <b>• Limited to just uploading images</b> which would have to be removed for it to act as a true file sharing website
           
-        I re-wrote most of the existing code, removing features such limiting uploads to images, the preview of all images in the blob
+        I re-wrote the existing code, removing features such limiting uploads to images, the preview of all images in the blob and added a SAS link generator thats outputted to the page
         
         Python:
         <img src="InitialWebpagepython.png" style='border:1px solid #ffffff' alt="">
@@ -140,13 +140,13 @@
         Webpage:
         <img src="webpage example.png" style='border:1px solid #ffffff' alt="">
 
-        And the basic flow of the program:
+        Basic flow of the program:
         <img src="Untitled Diagram.drawio(4).png" style='border:1px solid #ffffff' alt="">
-
-          
-
         
-
+        Demo:
+        <video controls width="600">
+          <source src="demo.mp4" type="video/mp4" />
+        </video>
 
 
     <!-- JavaScripts -->
