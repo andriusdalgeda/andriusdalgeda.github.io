@@ -3,15 +3,13 @@
 
   <!-- Head -->
   <head>    <!-- Metadata, OpenGraph and Schema.org -->
-    
 
     <!-- Standard metadata -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Andrius Dalgeda | Azure Projects</title>
-    <meta name="author" content="Andrius Dalgeda" />
-    <meta name="description" content="A growing collection of nifty projects" />
+    <title>Andrius Dalgeda | Project 3</title>
+    <meta name="description" content="Anything involving images" />
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website" />
 
 
@@ -32,16 +30,15 @@
     <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="">
     
     <!-- Dark Mode -->
+    
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark" />
 
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/dark_mode.js"></script>
     
-
   </head>
 
   <!-- Body -->
@@ -65,14 +62,14 @@
           <div class="collapse navbar-collapse text-right" id="navbarNav">
             <ul class="navbar-nav ml-auto flex-nowrap">
 
-               <!-- Home -->
+              <!-- About -->
               <li class="nav-item ">
                 <a class="nav-link" href="/">Home</a>
               </li>
               
               <!-- Other pages -->
-              <li class="nav-item active">
-                <a class="nav-link" href="/projects/">Azure Projects<span class="sr-only">(current)</span></a>
+              <li class="nav-item ">
+                <a class="nav-link" href="/projects/">Azure Projects</a>
               </li>
 
               <!-- Toogle theme mode -->
@@ -87,88 +84,55 @@
         </div>
       </nav>
     </header>
-    
-        <!-- Content -->
-        <div class="container mt-5">
-          <!-- page.html -->
-            <div class="post">
-    
-              <header class="post-header">
-                <h1 class="post-title">Azure Projects</h1>
-                <p class="post-description">A growing collection of Azure projects</p>
-              </header>
-    
-              <article>
-                <!-- pages/projects.md -->
-    <div class="projects">
-      <!-- Generate cards for each project -->
-      <div class="grid">
-    <!-- _includes/projects.html -->
-    
-    <div class="grid-sizer"></div>
-    <div class="grid-item">
-      <a href="/projects/project1/">
-          <div class="card hoverable">
-    <figure>
-    
-      <picture>
-      <img src="logicapp.png" style="max-width:256px;width:100%">
-      </picture>
-    </figure>
-            <div class="card-body">
-              <h2 class="card-title">Logic app onboarding</h2>
-              <p class="card-text">User onboarding using a logic app</p>
-              <div class="row ml-1 mr-1 p-0">
-              </div>
-            </div>
-          </div>
-        </a>
-    </div>
 
-    <!-- _includes/projects.html -->
-    <div class="grid-sizer"></div>
-    <div class="grid-item">
-      <a href="/projects/project2/">
-          <div class="card hoverable">
-    <figure>
-      <picture>
-      <img src="storageaccount.png" style="max-width:256px;width:100%">
-      </picture>
-    </figure>
-            <div class="card-body">
-              <h2 class="card-title">Anonymous File Upload</h2>
-              <p class="card-text">File upload site using Azure Blobs and Python Flask</p>
-              <div class="row ml-1 mr-1 p-0">
-              </div>
-            </div>
-          </div>
-        </a>
-    </div>
+    <!-- Content -->
+    <div class="container mt-5">
+      <!-- page.html -->
+        <div class="post">
 
-    <div class="grid-sizer"></div>
-    <div class="grid-item">
-      <a href="/projects/project3/">
-          <div class="card hoverable">
-    <figure>
-    
-      <picture>
-      <img src="bicep.png" style="max-width:256px;width:100%">
-      </picture>
-    </figure>
-            <div class="card-body">
-              <h2 class="card-title">Azure Bicep</h2>
-              <p class="card-text">Deploying a VM within a resource group using Bicep</p>
-              <div class="row ml-1 mr-1 p-0">
-              </div>
-            </div>
-          </div>
-        </a>
-    </div>
+          <header style="white-space:pre-line">
+          </header>
 
-  
+          <header class="post-header">
+            <h1 class="post-title">Azure Bicep</h1>
+            <p class="post-description"></p>
+          </header>
+        <header style="white-space:pre-line">
+        Using Azure Bicep to configure and deploy multiple Azure resoucre such as VMs, networking and storage
+        </header>
+        <b>Resources used:</b>
+        <header style="white-space:pre-line">  
+        • VS Code + <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep">Bicep extension</a>
+        • <a href="https://learn.microsoft.com/en-us/training/paths/bicep-azure-pipelines/">Microsoft Learn Bicep module</a>
+   
+        I initially used a <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-bicep?tabs=CLI">quickstart template</a> to add the basic resources required for a VM, this included a network interface, an NSG, a VNet, a subnet, a public IP and the VM itself
+        
+        With this template I removed the VM extensions, added additional requirements to the password param and added a detailed description to avoid user error when creating a password
+        <a href="https://github.com/andriusdalgeda/BicepTemplates/blob/main/vmDeployToExistingRG.bicep" target="_blank">Code sample</a>
+
+        I ran the following commands in Powershell to start the deployment:
+
+  <code>$rgName = 'bicepdeploy'
+        az group create --name rgName --location uksouth
+        # Creates the resource group the deployment will use
+
+        az deployment group create --name ExampleDeployment --resource-group $rgName --template-file vmDeployToExistingRG.bicep</code>
+
+        Initially when I ran the Bicep file I encountered an authorization error - since I am using a service account it does not have explicit permissions to initiate a deployment
+       
+        <img src="initerror.png" style='border:1px solid #ffffff' alt="">
+
+        To resolve this I followed the following <a href="https://github.com/Azure/Enterprise-Scale/wiki/ALZ-Setup-azure" target="_blank">guide</a>, where I just needed to assign 'Owner' permissions to my service account
+        
+        Running this again sucessfully created the Azure resource group & the accociated resources
+        <img src="initTerminalInput.png" style='border:1px solid #ffffff' alt="">
+        <img src="azDeployment.png" style='border:1px solid #ffffff' alt="">
+        <img src="azDeploymentNSGRule.png" style='border:1px solid #ffffff' alt="">
+
+
     <!-- JavaScripts -->
     <!-- jQuery -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- Bootsrap & MDB scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js" integrity="sha256-l/1pMF/+J4TThfgARS6KwWrk/egwuVvhRzfLAMQ6Ds4=" crossorigin="anonymous"></script>
