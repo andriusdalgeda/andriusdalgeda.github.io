@@ -106,7 +106,7 @@
         </header>
 
         <header style="white-space:pre-line">        
-        I started by first following the <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-python?tabs=managed-identity%2Croles-azure-portal%2Csign-in-visual-studio-code">Azure Blob storage quick start guide for Python</a> which consisted of importing the relevant packages and testing the functionality of an existing Blob
+        I started by first following the <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-python?tabs=managed-identity%2Croles-azure-portal%2Csign-in-visual-studio-code" target="_blank">Azure Blob storage quick start guide for Python</a> which consisted of importing the relevant packages and testing the functionality of an existing Blob
         I also created a Storage Account on Azure, this is an encapsulator for individual containers which allows me to control access as well as to generate access keys
 
         I was able to create a Blob using Phython:
@@ -123,10 +123,10 @@
 
         This confirmed that the functionality I needed existed within the Python package
         
-        I also found an existing <a href="https://github.com/tomlogs/photos-app/blob/master/photos.py">GitHub project</a> which has some of the basic functionality I was lookinf for (namely a HTML/CSS front-end as well as the ability to upload files directly to an Azure Blob)
+        I also found an existing <a href="https://github.com/tomlogs/photos-app/blob/master/photos.py" target="_blank">GitHub project</a> which has some of the basic functionality I was lookinf for (namely a HTML/CSS front-end as well as the ability to upload files directly to an Azure Blob)
         
         However this was missing other functionality such as:
-        <b>• No SAS <a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview">(Shared Access Signature)</a> capability</b> which would be necessary for me to generate a link that anyone could use to download the file for a limited time
+        <b>• No SAS <a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview" target="_blank">(Shared Access Signature)</a> capability</b> which would be necessary for me to generate a link that anyone could use to download the file for a limited time
         <b>• Limited to just uploading images</b> which would have to be removed for it to act as a true file sharing website
           
         I re-wrote the existing code, removing features such limiting uploads to images, the preview of all images in the blob and added a SAS link generator thats outputted to the page

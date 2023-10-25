@@ -102,10 +102,10 @@
         </header>
         <b>Resources used:</b>
         <header style="white-space:pre-line">  
-        • VS Code + <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep">Bicep extension</a>
-        • <a href="https://learn.microsoft.com/en-us/training/paths/bicep-azure-pipelines/">Microsoft Learn Bicep module</a>
+        • VS Code + <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep" target="_blank">Bicep extension</a>
+        • <a href="https://learn.microsoft.com/en-us/training/paths/bicep-azure-pipelines/" target="_blank">Microsoft Learn Bicep module</a>
    
-        I initially used a <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-bicep?tabs=CLI">quickstart template</a> to add the basic resources required for a VM, this included a network interface, an NSG, a VNet, a subnet, a public IP and the VM itself
+        I initially used a <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-bicep?tabs=CLI" target="_blank">quickstart template</a> to add the basic resources required for a VM, this included a network interface, an NSG, a VNet, a subnet, a public IP and the VM itself
         
         With this template I removed the VM extensions, added additional requirements to the password param and added a detailed description to avoid user error when creating a password
         <a href="https://github.com/andriusdalgeda/BicepTemplates/blob/main/vmDeployToExistingRG.bicep" target="_blank">Code sample</a>
@@ -124,9 +124,11 @@
 
         To resolve this I followed the following <a href="https://github.com/Azure/Enterprise-Scale/wiki/ALZ-Setup-azure" target="_blank">guide</a>, where I just needed to assign 'Owner' permissions to my service account
         
-        Running this again sucessfully created the Azure resource group & the accociated resources
+        Running this again sucessfully created the Azure resource group & the associated resources
         <img src="initTerminalInput.png" style='border:1px solid #ffffff' alt="">
+
         <img src="azDeployment.png" style='border:1px solid #ffffff' alt="">
+
         <img src="azDeploymentNSGRule.png" style='border:1px solid #ffffff' alt="">
 
 
