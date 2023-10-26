@@ -3,15 +3,13 @@
 
   <!-- Head -->
   <head>    <!-- Metadata, OpenGraph and Schema.org -->
-    
 
     <!-- Standard metadata -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Andrius Dalgeda | Azure Projects</title>
-    <meta name="author" content="Andrius Dalgeda" />
-    <meta name="description" content="A growing collection of nifty projects" />
+    <title>Andrius Dalgeda | Project 4</title>
+    <meta name="description" content="Anything involving images" />
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website" />
 
 
@@ -32,7 +30,6 @@
     <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="">
     
     <!-- Dark Mode -->
     
@@ -41,9 +38,7 @@
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/dark_mode.js"></script>
     
-
   </head>
-
   <!-- Body -->
   <body class="fixed-top-nav ">
 
@@ -65,14 +60,14 @@
           <div class="collapse navbar-collapse text-right" id="navbarNav">
             <ul class="navbar-nav ml-auto flex-nowrap">
 
-               <!-- Home -->
+              <!-- About -->
               <li class="nav-item ">
                 <a class="nav-link" href="/">Home</a>
               </li>
               
               <!-- Other pages -->
-              <li class="nav-item active">
-                <a class="nav-link" href="/projects/">Azure Projects<span class="sr-only">(current)</span></a>
+              <li class="nav-item ">
+                <a class="nav-link" href="/projects/">Azure Projects</a>
               </li>
 
               <!-- Toogle theme mode -->
@@ -87,87 +82,74 @@
         </div>
       </nav>
     </header>
-    
-        <!-- Content -->
-        <div class="container mt-5">
-          <!-- page.html -->
-            <div class="post">
-    
-              <header class="post-header">
-                <h1 class="post-title">Azure Projects</h1>
-                <p class="post-description">A growing collection of Azure projects</p>
-              </header>
-    
-              <article>
-                <!-- pages/projects.md -->
-    <div class="projects">
-      <!-- Generate cards for each project -->
-      <div class="grid">
-    <!-- _includes/projects.html -->
-    
-    <div class="grid-sizer"></div>
-    <div class="grid-item">
-      <a href="/projects/project1/">
-          <div class="card hoverable">
-    <figure>
-    
-      <picture>
-      <img src="logicapp.png" style="max-width:256px;width:100%">
-      </picture>
-    </figure>
-            <div class="card-body">
-              <h2 class="card-title">Logic app onboarding</h2>
-              <p class="card-text">User onboarding using a logic app</p>
-              <div class="row ml-1 mr-1 p-0">
-              </div>
-            </div>
-          </div>
-        </a>
-    </div>
 
-    <!-- _includes/projects.html -->
-    <div class="grid-sizer"></div>
-    <div class="grid-item">
-      <a href="/projects/project2/">
-          <div class="card hoverable">
-    <figure>
-      <picture>
-      <img src="storageaccount.png" style="max-width:256px;width:100%">
-      </picture>
-    </figure>
-            <div class="card-body">
-              <h2 class="card-title">Anonymous File Upload</h2>
-              <p class="card-text">File upload site using Azure Blobs and Python Flask</p>
-              <div class="row ml-1 mr-1 p-0">
-              </div>
-            </div>
-          </div>
-        </a>
-    </div>
+    <!-- Content -->
+    <div class="container mt-5">
+      <!-- page.html -->
+        <div class="post">
 
-    <div class="grid-sizer"></div>
-    <div class="grid-item">
-      <a href="/projects/project3/">
-          <div class="card hoverable">
-    <figure>
-    
-      <picture>
-      <img src="bicep.png" style="max-width:256px;width:100%">
-      </picture>
-    </figure>
-            <div class="card-body">
-              <h2 class="card-title">Azure Bicep Introduction</h2>
-              <p class="card-text">Deploying a VM within a resource group using Bicep</p>
-              <div class="row ml-1 mr-1 p-0">
-              </div>
-            </div>
-          </div>
-        </a>
-    </div>
+          <header style="white-space:pre-line">
+          </header>
+          <html>
+          <header class="post-header">
+            <h1 class="post-title">Connected multi-region private VNets</h1>
+            <p class="post-description"></p>
+          </header>
+        
+        <header style="white-space:pre-line">
+        Creating 2 seperate private VNets - one in the UK and another in the US and enabling communication between resources without using the internet
 
-  
-    <!-- JavaScripts -->
-    <!-- jQuery -->
+        <b>Resources used:</b>
+        • Virtual Network (NSGs,ASGs, subnets, private endpoints, peering)
+        • Private DNS zone (Virtual network links)
+        • Azure Bastion</header>
+        <header style="white-space:pre-line">
+        I started by creating a main VNet called VNet-Cloud along with an associated NSG (Network Security Group) and ASG (Application Securuity Group)
+        <img src="VNetinit.png" style='border:1px solid #ffffff' alt="">
+
+        I then created a few subnets, oen for VMs, Storage Accounts and Databases - I also applied the NSG to the default gateway
+        <img src="subnetInit.png" style='border:1px solid #ffffff' alt="">
+
+        I created a few resources I would place in their respective subnets:
+        • A VM without a public IP to simulate a private network
+        • A storage account 
+        • A database server
+
+        With the latter 2 I also created Private Endpoints, these only allow network traffic originating from the VNet meaning that they will not be accessiable over the internet (this simulates a private file server/database )
+        <img src="privateEndpoints.png" style='border:1px solid #ffffff' alt="">
+
+        I ensured this worked by trying to access a blob in the storage account which sucessfully blocked me and returned an error
+        <img src="storagePrivateEndpoint.png" style='border:1px solid #ffffff' alt="" width=75%>
+        
+        I then created my second VNet called usVNet - I ensured this had a different address space, the UK one is 10.0.0.0/16 and since I want to connect these two the US one would have to be changed, in this case I changed it to 10.10.0.0/16
+        This is necessary as a Peering isn't supported with networks that share the same address white-space
+        <img src="usVnetinit.png" style='border:1px solid #ffffff' alt="">
+
+        I also created a vmSubnet inside the US VNet and created a VM inside this subnet (again without a public IP), I would later use both UK & US VM's to ensure local connectivity between VNets.
+        However first I would need to create a link between both regions - in Azure this feature is called Peering 
+        
+        I set up peering between both VNets, this allows for communication between networks without ever exposing them to the internet, essentially simulating a private network
+        
+        <img src="peeringInit.png" style='border:1px solid #ffffff' alt="">
+        <img src="peeringLinked.png" style='border:1px solid #ffffff' alt="">
+
+        
+        To test the connectivity between networks I chose to also set up Azure Bastion, this allows me to SSH into a machine without the need to use a public IP, which ensures my network is private.
+        <img src="bastion.png" style='border:1px solid #ffffff' alt="">
+        
+        Once I connected to the UK VM I sent a ping to the US VM - this was successful
+        <img src="initPingUKtoUS.png" style='border:1px solid #ffffff' alt="">
+
+        I then chose to also set up a Private DNS Zone, I created this under the UK VNet however needed to create a UK & US Virtual network link to allow the VM's to auto-register themselves in the DNS
+        
+        <img src="dnsVNetLink.png" style='border:1px solid #ffffff' alt="">
+        <img src="dnsZone.png" style='border:1px solid #ffffff' alt="">
+
+        I again ensured this worked using ping commands - one from the each region
+        Both of these sucessfully resolved the name to the IP
+        <img src="2ndUStoUKping.png" style='border:1px solid #ffffff' alt="">
+        <img src="2ndUKtoUSping.png" style='border:1px solid #ffffff' alt="">
+
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- Bootsrap & MDB scripts -->
