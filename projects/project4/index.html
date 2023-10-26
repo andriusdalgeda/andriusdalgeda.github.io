@@ -131,8 +131,8 @@
         I set up peering between both VNets, this allows for communication between networks without ever exposing them to the internet, essentially simulating a private network
         
         <img src="peeringInit.png" style='border:1px solid #ffffff' alt="">
-        <img src="peeringLinked.png" style='border:1px solid #ffffff' alt="">
 
+        <img src="peeringLinked.png" style='border:1px solid #ffffff' alt="">
         
         To test the connectivity between networks I chose to also set up Azure Bastion, this allows me to SSH into a machine without the need to use a public IP, which ensures my network is private.
         <img src="bastion.png" style='border:1px solid #ffffff' alt="">
@@ -143,11 +143,13 @@
         I then chose to also set up a Private DNS Zone, I created this under the UK VNet however needed to create a UK & US Virtual network link to allow the VM's to auto-register themselves in the DNS
         
         <img src="dnsVNetLink.png" style='border:1px solid #ffffff' alt="">
+
         <img src="dnsZone.png" style='border:1px solid #ffffff' alt="">
 
         I again ensured this worked using ping commands - one from the each region
         Both of these sucessfully resolved the name to the IP
         <img src="2ndUStoUKping.png" style='border:1px solid #ffffff' alt="">
+
         <img src="2ndUKtoUSping.png" style='border:1px solid #ffffff' alt="">
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
