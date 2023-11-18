@@ -116,11 +116,14 @@
         <img src="VnetPeering.png" style='border:1px solid #ffffff' alt="">
 
         Second, I created:
-        <ul><li><b>app-vnet-nsg</b> NSG and associating that with backend subnet of <b>app-vnet</b></li><li><b>app-backend-asg</b> ASG</li><ul><li>Creating a rule in app-vnet-nsg to allow for SSH over port 22 to the ASG<img src="sshrule.png" style='border:1px solid #ffffff' alt=""></li></ul>
-        <ul><li>Create 2 VMs using the <a href="https://raw.githubusercontent.com/MicrosoftLearning/Configure-secure-access-to-workloads-with-Azure-virtual-networking-services/main/Instructions/Labs/azuredeploy.json" target="_blank">bicep template</a>, and associating the VM2-nic with the ASG<img src="VM2nic.png" style='border:1px solid #ffffff' alt=""></li></ul></ul>
+        <ul><li><b>app-vnet-nsg</b> NSG and associating that with backend subnet of <b>app-vnet</b></li><li><b>app-backend-asg</b> ASG</li><ul><li>Creating a rule in app-vnet-nsg to allow for SSH over port 22 to the ASG
+        <img src="sshrule.png" style='border:1px solid #ffffff' alt=""></li></ul>
+        <ul><li>Create 2 VMs using the <a href="https://raw.githubusercontent.com/MicrosoftLearning/Configure-secure-access-to-workloads-with-Azure-virtual-networking-services/main/Instructions/Labs/azuredeploy.json" target="_blank">bicep template</a>, and associating the VM2-nic with the ASG
+        <img src="VM2nic.png" style='border:1px solid #ffffff' alt=""></li></ul></ul>
             
         Third I then created:
-        <ul><li><b>AzureFirewallSubnet (10.1.63.0/24)</b> subnet within <b>app-vnet</b></li><li><b>app-vnet-firewall</b> firewall</li><ul><li><b>fw-policy</b> firewall policy along with an application and network rule colletion, one application rule to enable website communication with an external server and another network rule to allow the webserver to communicate with a DNS server<img src="fw-policy.png" style='border:1px solid #ffffff' alt=""></li></ul></ul>
+        <ul><li><b>AzureFirewallSubnet (10.1.63.0/24)</b> subnet within <b>app-vnet</b></li><li><b>app-vnet-firewall</b> firewall</li><ul><li><b>fw-policy</b> firewall policy along with an application and network rule colletion, one application rule to enable website communication with an external server and another network rule to allow the webserver to communicate with a DNS server
+        <img src="fw-policy.png" style='border:1px solid #ffffff' alt=""></li></ul></ul>
 
         Fourth I then created:
         <ul><li><b>app-vnet-firewall-rt</b> route table</li><ul><li>Associating the route table with the frontend & backend subnet in app-vnet
@@ -130,8 +133,10 @@
             </li></ul></ul>
 
         Finally I then created:
-        <ul><li>contoso.com private DNS zone</li><ul><li>Virtual network link to app-vnet<img src="dnsVnetLink.png" style='border:1px solid #ffffff' alt=""></li></ul>
-        <ul><li>Backend record set<img src="dnsRecord.png" style='border:1px solid #ffffff' alt=""></li></ul></ul>
+        <ul><li>contoso.com private DNS zone</li><ul><li>Virtual network link to app-vnet
+        <img src="dnsVnetLink.png" style='border:1px solid #ffffff' alt=""></li></ul>
+        <ul><li>Backend record set
+        <img src="dnsRecord.png" style='border:1px solid #ffffff' alt=""></li></ul></ul>
 
 
         
